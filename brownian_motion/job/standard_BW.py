@@ -39,6 +39,7 @@ def main():
     figplace = '../figs'#move to fig file
     figname= str('standard_%s.png'%sdekey['observation'])
     arrayname= str('standrd_%s.npy'%sdekey['observation'])
+    
     arraypath = os.path.join(figplace,arrayname)
     figpath = os.path.join(figplace,figname)
 
@@ -68,14 +69,14 @@ if __name__ == '__main__':
     4. write
     '''
     parser = argparse.ArgumentParser(description='runnning parameters')
-    parser.add_argument('--repeat_time', '-n', type=int, default =10,  help='number of trajectories')
-    parser.add_argument('--terminal', '-t', type=int, default =100,  help='terminal time')
-    parser.add_argument('--step', '-s', type=float, default =0.01,  help='step size')
+    parser.add_argument('--repeat_time', '-n', type=int, default =1000,  help='number of trajectories')
+    parser.add_argument('--terminal', '-t', type=int, default =1,  help='terminal time')
+    parser.add_argument('--step', '-s', type=float, default =0.001,  help='step size')
     parser.add_argument('--mean', '-me', type=int, default =0,  help='noize nomal mean')
     parser.add_argument('--variance', '-v', type=int, default =1,  help='noize nomal variance')
 
     parser.add_argument('--function', '-f', type=str, default ='standard',  help='function of the random walk')
-    parser.add_argument('--observation', '-m', type=str, default ='path',  help='mode of the random walk')
+    parser.add_argument('--observation', '-m', type=str, default ='qv',  help='mode of the random walk')
 
     args= parser.parse_args()
     #pdb.set_trace()
