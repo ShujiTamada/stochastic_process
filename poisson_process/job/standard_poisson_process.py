@@ -33,8 +33,8 @@ def main():
 
     figplace = '../fig'#move to fig file
 
-    figname= str('standard_poisson.png')
-    arrayname= str('standard_poisson')
+    figname= str('standard_poisson_%s.png'%sdekey['observation'])
+    arrayname= str('standard_poisson_%s.npy'%sdekey['observation'])
 
     arraypath = os.path.join(figplace,arrayname)
     figpath = os.path.join(figplace,figname)
@@ -46,13 +46,13 @@ def main():
 
 
 
-    times,path_box=mypoi.simulation(args.repeat_time)
-    np.save(arraypath,path_box)
+    times,observation=mypoi.simulation(args.repeat_time)
+    np.save(arraypath,observation)
 
-    mypoi.saveResult(figpath, times, path_box)
+    mypoi.saveResult(figpath, times, observation)
 
-    numpath,numstep = path_box.shape
-    lastval= path_box[:,numstep-1]#terminalinal value
+    numpath,numstep = observation.shape
+    lastval= observation[:,numstep-1]#terminalinal value
     meanval =  np.mean(lastval)#mean of terminalinal value
     varval  = np.var(lastval)#var of terminalinal value
     print('over %spaths, mean at time%s is %s. var is %s'%(numpath,args.terminal, meanval, varval))
@@ -75,11 +75,11 @@ if __name__ == '__main__':
     4. write
     '''
     parser = argparse.ArgumentParser(description='runnning parameters')
-    parser.add_argument('--repeat_time', '-n', type=int, default =5000,  help='number of trajectories')
+    parser.add_argument('--repeat_time', '-r', type=int, default =100,  help='number of trajectories')
     parser.add_argument('--terminal', '-t', type=int, default =1,  help='terminal time')
-    parser.add_argument('--step', '-s', type=float, default =0.05,  help='step size')
+    parser.add_argument('--step', '-s', type=float, default =0.005,  help='step size')
     parser.add_argument('--function', '-f', type=str, default ='standard',  help='function of the random walk')
-    parser.add_argument('--observation', '-m', type=str, default ='path',  help='mode of the random walk')
+    parser.add_argument('--observation', '-m', type=str, default ='qv',  help='mode of the random walk')
 
     args= parser.parse_args()
     #pdb.set_trace()
