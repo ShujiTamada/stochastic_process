@@ -4,7 +4,7 @@
 import numpy as np#Pakkege must be put outside class
 import pdb
 from matplotlib import pyplot as plt
-import pdb
+
 
 
 '''

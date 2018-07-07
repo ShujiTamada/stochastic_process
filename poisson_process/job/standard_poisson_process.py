@@ -27,6 +27,7 @@ def main():
     sdekey['stepsize'] = args.step
     sdekey['term'] = args.terminal
     sdekey['lambda'] = 1
+    sdekey['repeat_time'] = args.repeat_time
 
     sdekey['observation'] = args.observation
     sdekey['function_select'] = args.function
@@ -75,9 +76,9 @@ if __name__ == '__main__':
     4. write
     '''
     parser = argparse.ArgumentParser(description='runnning parameters')
-    parser.add_argument('--repeat_time', '-r', type=int, default =100,  help='number of trajectories')
+    parser.add_argument('--repeat_time', '-r', type=int, default =4000,  help='number of trajectories')
     parser.add_argument('--terminal', '-t', type=int, default =1,  help='terminal time')
-    parser.add_argument('--step', '-s', type=float, default =0.005,  help='step size')
+    parser.add_argument('--step', '-s', type=float, default =0.01,  help='step size')
     parser.add_argument('--function', '-f', type=str, default ='standard',  help='function of the random walk')
     parser.add_argument('--observation', '-m', type=str, default ='qv',  help='mode of the random walk')
 
