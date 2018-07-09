@@ -37,10 +37,11 @@ def main():
     sdekey['function_select'] = args.function
 
     figplace = '../figs'#move to fig file
-    figname= str('standard_%s.png'%sdekey['observation'])
+    jobplace = '../data'
+    figname= str('standard_%s.pdf'%sdekey['observation'])
     arrayname= str('standrd_%s.npy'%sdekey['observation'])
-    
-    arraypath = os.path.join(figplace,arrayname)
+
+    arraypath = os.path.join(jobplace,arrayname)
     figpath = os.path.join(figplace,figname)
 
 

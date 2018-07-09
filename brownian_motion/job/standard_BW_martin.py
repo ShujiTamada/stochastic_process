@@ -17,6 +17,9 @@ import pdb
 import os
 
 def main():
+
+
+
     div=args.terminal/args.step#jump_number
     init=np.array([0.])#init_value
 
@@ -36,8 +39,8 @@ def main():
 
     figplace = '../figs'#move to fig file
     jobplace = '../data'
-    figname= str('BM_Doob.png')
-    arrayname= str('BM_Doob.npy')
+    figname= str('standard_BW_mar.png')
+    arrayname= str('standard_BW_mar.npy')
 
     arraypath = os.path.join(jobplace,arrayname)
     figpath = os.path.join(figplace,figname)
@@ -47,7 +50,7 @@ def main():
     mybmt=bmt(**sdekey)
 
     time_s=0.5
-    sampledat,s_position,times=mybmt.BW_Doob(int(time_s/args.step))
+    sampledat,s_position,times=mybmt.standard_BW_martin(int(time_s/args.step))
     np.save(arraypath,sampledat)
     mybmt.saveplot(figpath,times,sampledat,s_position)
 
@@ -64,9 +67,9 @@ if __name__ == '__main__':
     4. write
     '''
     parser = argparse.ArgumentParser(description='runnning parameters')
-    parser.add_argument('--repeat_time', '-n', type=int, default =20000,  help='number of trajectories')
+    parser.add_argument('--repeat_time', '-n', type=int, default =1000,  help='number of trajectories')
     parser.add_argument('--terminal', '-t', type=int, default =1,  help='terminal time')
-    parser.add_argument('--step', '-s', type=float, default =0.01,  help='step size')
+    parser.add_argument('--step', '-s', type=float, default =0.001,  help='step size')
     parser.add_argument('--mean', '-me', type=int, default =0,  help='noize nomal mean')
     parser.add_argument('--variance', '-v', type=int, default =1,  help='noize nomal variance')
 
